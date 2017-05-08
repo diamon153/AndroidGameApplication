@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.jongwook.gameapplication.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="50dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView0"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:onClick="menuClicked"
+                android:tag="rock"
+                app:srcCompat="@android:drawable/ic_partial_secure" />
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:onClick="menuClicked"
+                android:tag="four"
+                app:srcCompat="@android:drawable/btn_star_big_on" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:onClick="menuClicked"
+                android:tag="button"
+                app:srcCompat="@android:drawable/ic_notification_overlay" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:onClick="menuClicked"
+                android:tag="ship"
+                app:srcCompat="@android:drawable/ic_menu_myplaces" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:onClick="menuClicked"
+                android:tag="omok"
+                app:srcCompat="@android:drawable/ic_dialog_dialer" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                android:layout_weight="1"
+                android:onClick="menuClicked"
+                android:tag="setting"
+                app:srcCompat="@android:drawable/ic_menu_preferences" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/welcomeText"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:onClick="statusUpdate"
+        android:tag="0"
+        android:text="TextView"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/button2"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="40dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:onClick="statusUpdate"
+        android:tag="2" />
+
+    <Button
+        android:id="@+id/button3"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="40dp"
+        android:layout_height="80dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:onClick="statusUpdate"
+        android:tag="3" />
+
+    <Button
+        android:id="@+id/button4"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="statusUpdate"
+        android:tag="1" />
+</RelativeLayout>
