@@ -1,17 +1,20 @@
 package com.example.jongwook.gameapplication;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity implements PasswordDialogFragment.NoticeDialogListener {
+public class MainActivity extends AppCompatActivity {
     public static final String PREFS_NAME = "MyPrefsFile";
     static String username;
     static TextView welcomeText;
@@ -51,8 +54,6 @@ public class MainActivity extends AppCompatActivity implements PasswordDialogFra
         if (state == buttonPressed) {
             state++;
             if (state == 4) {
-                //Intent intent = new Intent(this, SecondActivity.class);
-                //startActivity(intent);
                 state = 0;
                 showPasswordDialog();
             }
@@ -63,29 +64,37 @@ public class MainActivity extends AppCompatActivity implements PasswordDialogFra
 
 
     public void showPasswordDialog() {
-        // Create an instance of the dialog fragment and show it
-        DialogFragment dialog = new PasswordDialogFragment();
-        dialog.show(getSupportFragmentManager(), "PasswordDialogFragment");
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        // Get the layout inflater
+        LayoutInflater inflater = this.getLayoutInflater();
+
+
+
+        // Inflate and set the layout for the dialog
+        // Pass null as the parent view because its going in the dialog layout
+        builder.setView(inflater.inflate(R.layout.dialog_signin, null))
+                // Add action buttons
+                .setPositiveButton("Login", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Dialog f = (Dialog) dialog;
+                        EditText passwordText;
+                        passwordText = (EditText) f.findViewById(R.id.passwordText);
+                        if (passwordText.getText().toString().equals("yonsei")) {
+                            Intent intent = new Intent(getApplicationContext(), SecondActivity.class);
+                            startActivity(intent);
+                        } else {
+                            dialog.dismiss();
+                        }
+
+                    }
+                })
+                .setNegativeButton("Cancel",  new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+        builder.create().show();
     }
 
-    // The dialog fragment receives a reference to this Activity through the
-    // Fragment.onAttach() callback, which it uses to call the following methods
-    // defined by the NoticeDialogFragment.NoticeDialogListener interface
-    @Override
-    public void onDialogPositiveClick(DialogFragment dialog) {
-        // User touched the dialog's positive buttton
-//        EditText passwordText = (EditText) dialog.findViewById(R.id.passwordText);
-//
-//        if (passwordText.getText().toString() == "yonsei") {
-//            Intent intent = new Intent(this, SecondActivity.class);
-//            startActivity(intent);
-//        }
-
-
-    }
-
-    @Override
-    public void onDialogNegativeClick(DialogFragment dialog) {
-        // User touched the dialog's negative button
-    }
 }
