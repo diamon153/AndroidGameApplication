@@ -37,4 +37,12 @@
         android:layout_marginBottom="179dp"
         android:onClick="changeUsername"
         android:text="Change" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="18dp"
+        android:text="Images from icons8.com" />
 </RelativeLayout>

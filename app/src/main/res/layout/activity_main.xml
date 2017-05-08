@@ -27,7 +27,7 @@
                 android:layout_weight="1"
                 android:onClick="menuClicked"
                 android:tag="rock"
-                app:srcCompat="@android:drawable/ic_partial_secure" />
+                app:srcCompat="@drawable/scissor" />
 
             <ImageView
                 android:id="@+id/imageView1"
@@ -37,7 +37,7 @@
                 android:layout_weight="1"
                 android:onClick="menuClicked"
                 android:tag="four"
-                app:srcCompat="@android:drawable/btn_star_big_on" />
+                app:srcCompat="@drawable/four" />
 
             <ImageView
                 android:id="@+id/imageView2"
@@ -47,7 +47,7 @@
                 android:layout_weight="1"
                 android:onClick="menuClicked"
                 android:tag="button"
-                app:srcCompat="@android:drawable/ic_notification_overlay" />
+                app:srcCompat="@drawable/button" />
         </LinearLayout>
 
         <LinearLayout
@@ -65,7 +65,7 @@
                 android:layout_weight="1"
                 android:onClick="menuClicked"
                 android:tag="ship"
-                app:srcCompat="@android:drawable/ic_menu_myplaces" />
+                app:srcCompat="@drawable/ship" />
 
             <ImageView
                 android:id="@+id/imageView4"
@@ -75,7 +75,7 @@
                 android:layout_weight="1"
                 android:onClick="menuClicked"
                 android:tag="omok"
-                app:srcCompat="@android:drawable/ic_dialog_dialer" />
+                app:srcCompat="@drawable/grid" />
 
             <ImageView
                 android:id="@+id/imageView5"
@@ -85,7 +85,7 @@
                 android:layout_weight="1"
                 android:onClick="menuClicked"
                 android:tag="setting"
-                app:srcCompat="@android:drawable/ic_menu_preferences" />
+                app:srcCompat="@drawable/setting" />
         </LinearLayout>
     </LinearLayout>
 
