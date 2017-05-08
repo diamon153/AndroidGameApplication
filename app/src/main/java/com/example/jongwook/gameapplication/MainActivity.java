@@ -77,7 +77,9 @@ public class MainActivity extends AppCompatActivity {
                         Dialog f = (Dialog) dialog;
                         EditText passwordText;
                         passwordText = (EditText) f.findViewById(R.id.passwordText);
-                        if (passwordText.getText().toString().equals("yonsei")) {
+                        SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+                        String password = settings.getString("password", "yonsei");
+                        if (passwordText.getText().toString().equals(password)) {
                             Intent intent = new Intent(getApplicationContext(), SecondActivity.class);
                             startActivity(intent);
                         } else {

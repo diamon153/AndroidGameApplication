@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".RockActivity" />
         <activity android:name=".SettingActivity" />
-        <activity android:name=".SecondActivity"></activity>
+        <activity android:name=".SecondActivity" />
+        <activity android:name=".SecondSettingActivity"></activity>
     </application>
 
 </manifest>
