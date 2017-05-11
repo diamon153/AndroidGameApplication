@@ -14,8 +14,19 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class MainActivity extends AppCompatActivity {
     public static final String PREFS_NAME = "MyPrefsFile";
+    static final String userID = "ryan";
+    static String partnerID;
+    static String roomID;
+    static int order;
+
     static String username;
     static TextView welcomeText;
     int state;
@@ -25,13 +36,30 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Set up the welcome text
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         username = settings.getString("username", "user");
         welcomeText = (TextView) findViewById(R.id.welcomeText);
         welcomeText.setText("Welcome " + username);
         state = 0;
+
+        // Get relevant data from firebase
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users/" + userID);
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                order = dataSnapshot.child("order").getValue(Integer.class);
+                partnerID = dataSnapshot.child("partner").getValue(String.class);
+                roomID = dataSnapshot.child("room").getValue(String.class);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+            }
+        });
     }
 
+    // Find out which menu button was clicked and move to a different activity
     public void menuClicked(View view) {
 
         Intent intent;
@@ -49,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // Secret options menu
     public void statusUpdate(View view) {
         int buttonPressed = Integer.parseInt(view.getTag().toString());
         if (state == buttonPressed) {
@@ -62,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
+    // Password dialog for the secret activity
     public void showPasswordDialog() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -95,5 +124,4 @@ public class MainActivity extends AppCompatActivity {
                 });
         builder.create().show();
     }
-
 }
